@@ -21,6 +21,7 @@ console.log(typeof valor)
 // cumple.toString();
 valor = cumple;
 
+
 valor = diaHoy.getMonth();
 valor = diaHoy.getDate();
 valor = diaHoy.getDay();
