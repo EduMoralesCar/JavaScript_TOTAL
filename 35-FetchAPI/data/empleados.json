@@ -1,0 +1,20 @@
+[
+     {
+          "id" : 1,
+          "nombre" : "edomoca",
+          "empresa" : "Código con edomocar",
+          "trabajo" : "Desarrollador Web"
+     },
+     {
+          "id" : 2,
+          "nombre" : "Alejandra",
+          "empresa" : "Código con edomocar",
+          "trabajo" : "Diseñadora"
+     },
+     {
+          "id" : 3,
+          "nombre" : "Pedro",
+          "empresa" : "Código con edomocar",
+          "trabajo" : "Aplicaciones Móviles"
+     }
+]
