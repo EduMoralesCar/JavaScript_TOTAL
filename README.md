@@ -33,17 +33,24 @@ Puedes recorrer cada carpeta para seguir la evolución de los ejercicios y proye
 
 ## 🛠️ Flujo de Trabajo
 
-1. Estructuro cada sección del curso en su propia carpeta.
-2. Dentro de cada módulo, desarrollo múltiples archivos que corresponden a ejercicios o retos específicos.
+1. Cada sección del curso tiene su propia carpeta.
+2. Dentro de cada módulo, desarrollo múltiples archivos para ejercicios o retos específicos.
 3. Realizo pruebas directamente en la terminal con Node.js.
+4. Mantengo convenciones de nombres y estructura clara para facilitar la exploración desde cero.
 
 ### 🔧 Cómo Ejecutar un Archivo `.js`
 
-Solo necesitas tener Node.js instalado. Luego puedes ejecutar cualquier archivo del repositorio así:
+Solo necesitas tener Node.js instalado.  
+Para ejecutar cualquier archivo del repositorio:
 
 ```bash
-# Abrir la terminal y navegar al directorio del archivo
+# Abrir la terminal y navegar al directorio del archivo deseado
 cd 03-Strings
 
 # Ejecutar el archivo con Node.js
 node 03-app.js
+```
+
+Si quieres revisar los ejemplos en el navegador, abre el archivo index.html correspondiente en cada módulo.
+
+**Nota:** Recomiendo tener Node.js actualizado (v18 o superior) para evitar incompatibilidades.
