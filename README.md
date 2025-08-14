@@ -20,14 +20,16 @@ Puedes recorrer cada carpeta para seguir la evolución de los ejercicios y proye
 
 ## 🧠 Herramientas Utilizadas
 
-- **Visual Studio Code (VSCode)**  
+- **[Visual Studio Code (VSCode)](https://code.visualstudio.com/)**  
   Editor principal para desarrollo, estructuración de carpetas y debugging.
 
-- **Node.js v22.14.0**  
-  Ejecuto archivos `.js` directamente desde la consola sin depender de `index.html`, lo que agiliza la revisión de resultados en tiempo real.
+- **[Node.js v22.14.0](https://nodejs.org/es)**  
+  Ejecuto archivos .js directamente desde la consola, para revisar resultados en tiempo real.
 
-- **ESLint**  
+- **[ESLint](https://eslint.org/)**  
   Configurado para mantener buenas prácticas y consistencia en el código fuente.
+
+- También utilizo extensiones como Prettier y herramientas de Git para control de versiones.
 
 ## 🛠️ Flujo de Trabajo
 
