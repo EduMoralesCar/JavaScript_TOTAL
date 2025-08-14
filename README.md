@@ -4,7 +4,7 @@ Este repositorio documenta mi avance práctico y progresivo en JavaScript modern
 
 Cada carpeta representa un módulo temático, e incluye ejercicios, retos y pequeños proyectos que muestran la evolución de mi aprendizaje.
 
-## 🚀 Avance
+## 🚀 Avance y Estructura
 
 He organizado mi aprendizaje en módulos claros que abarcan:
 
@@ -15,7 +15,8 @@ He organizado mi aprendizaje en módulos claros que abarcan:
 - Múltiples proyectos prácticos con distintas temáticas
 - Integración de APIs, almacenamiento local, y diseño de funcionalidades modernas
 
-El progreso se refleja en commits etiquetados por sección (por ejemplo: `AVANCE06 - Sección de Operadores Completo`), que marcan hitos de aprendizaje dentro del repositorio.
+El progreso se refleja en commits etiquetados por sección (ejemplo: `AVANCE06 - Sección de Operadores Completo`), que marcan hitos de aprendizaje.
+Puedes recorrer cada carpeta para seguir la evolución de los ejercicios y proyectos.
 
 ## 🧠 Herramientas Utilizadas
 
