@@ -4,6 +4,8 @@ Este repositorio documenta mi avance práctico y progresivo en JavaScript modern
 
 Cada carpeta representa un módulo temático, e incluye ejercicios, retos y pequeños proyectos que muestran la evolución de mi aprendizaje.
 
+---
+
 ## 🚀 Avance y Estructura
 
 He organizado mi aprendizaje en módulos claros que abarcan:
@@ -18,6 +20,8 @@ He organizado mi aprendizaje en módulos claros que abarcan:
 El progreso se refleja en commits etiquetados por sección (ejemplo: `AVANCE06 - Sección de Operadores Completo`), que marcan hitos de aprendizaje.
 Puedes recorrer cada carpeta para seguir la evolución de los ejercicios y proyectos.
 
+---
+
 ## 🧠 Herramientas Utilizadas
 
 - **[Visual Studio Code (VSCode)](https://code.visualstudio.com/)**  
@@ -31,12 +35,16 @@ Puedes recorrer cada carpeta para seguir la evolución de los ejercicios y proye
 
 - También utilizo extensiones como Prettier y herramientas de Git para control de versiones.
 
+---
+
 ## 🛠️ Flujo de Trabajo
 
 1. Cada sección del curso tiene su propia carpeta.
 2. Dentro de cada módulo, desarrollo múltiples archivos para ejercicios o retos específicos.
 3. Realizo pruebas directamente en la terminal con Node.js.
 4. Mantengo convenciones de nombres y estructura clara para facilitar la exploración desde cero.
+
+---
 
 ### 🔧 Cómo Ejecutar un Archivo `.js`
 
@@ -54,3 +62,5 @@ node 03-app.js
 Si quieres revisar los ejemplos en el navegador, abre el archivo index.html correspondiente en cada módulo.
 
 **Nota:** Recomiendo tener Node.js actualizado (v18 o superior) para evitar incompatibilidades.
+
+---
