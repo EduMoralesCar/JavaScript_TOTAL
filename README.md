@@ -1,6 +1,8 @@
 # 📚 Curso de JavaScript Moderno — Registro de Aprendizaje
 
-Este repositorio documenta mi avance práctico y progresivo en JavaScript moderno, abordando fundamentos, estructuras, lógica y buenas prácticas para el desarrollo web. Cada carpeta representa una sección temática del curso, con ejemplos y ejercicios que ejecuto directamente en la terminal mediante Node.js.
+Este repositorio documenta mi avance práctico y progresivo en JavaScript moderno, abarcando fundamentos, estructuras, lógica y buenas prácticas para el desarrollo web. Está pensado tanto para quienes están aprendiendo desde cero como para quienes buscan reforzar conceptos y descubrir buenas prácticas.
+
+Cada carpeta representa un módulo temático, e incluye ejercicios, retos y pequeños proyectos que muestran la evolución de mi aprendizaje.
 
 ## 🚀 Avance
 
