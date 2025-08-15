@@ -61,6 +61,12 @@ node 03-app.js
 
 Si quieres revisar los ejemplos en el navegador, abre el archivo index.html correspondiente en cada módulo.
 
-**Nota:** Recomiendo tener Node.js actualizado (v18 o superior) para evitar incompatibilidades.
+⚠️ **Nota:** Recomiendo tener Node.js actualizado (v18 o superior) para evitar incompatibilidades.
+
+---
+
+### 📄 Licencia
+
+Este repositorio está bajo la licencia MIT. Puedes usar, modificar y compartir el código libremente citando este repositorio.
 
 ---
