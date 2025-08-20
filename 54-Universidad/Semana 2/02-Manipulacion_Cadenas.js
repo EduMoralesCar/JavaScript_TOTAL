@@ -5,8 +5,8 @@ let edad = 25;
 
 presentacion = `\nHola, mi nombre es ${nombre} y tengo ${edad} años. Mi Teléfono: 123-456-7890`; // Interpolación de cadenas
 console.log(presentacion);
-// Regular Expressions
 
+// Regular Expressions
 let texto = presentacion;
 let regex = /[A-Z]/g; // Expresión regular para buscar mayúsculas
 let regexTelefono = /\d{3}-\d{3}-\d{4}/; // Expresión regular para buscar el número de teléfono
