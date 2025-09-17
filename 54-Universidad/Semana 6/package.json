@@ -1,0 +1,17 @@
+{
+  "name": "javascript",
+  "version": "1.0.0",
+  "description": "Bases de Node en JavaScript Moderno",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/Callback/01-app.js",
+    "dev": "nodemon ./src/Callback/02-app.js",
+    "promises": "nodemon ./src/promises/08-app.js"
+  },
+  "author": "Edu Morales",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
