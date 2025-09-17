@@ -1,5 +1,11 @@
 # Promises (Promesas) en JavaScript
 
+<p align="center">
+<img width="588" height="294" alt="image" src="https://github.com/user-attachments/assets/116d71eb-2e16-4572-9c88-5d52c6f92824" />
+</p>
+
+---
+
 ## ¿Qué es una Promesa?
 
 Una **promesa** es un objeto en JavaScript que representa la eventual finalización (o falla) de una operación asíncrona y su resultado. Permite escribir código asíncrono de manera más clara y manejable que usando solo callbacks.
