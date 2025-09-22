@@ -14,5 +14,5 @@ function multiplicacionAsincrona(num1, num2, callback) {
 
 // Uso de la función
 multiplicacionAsincrona(4, 5, (resultado) => {
-    console.log('Multiplicacion:', resultado);
+    console.log('El resultado de la Multiplicacion:', resultado);
 })
