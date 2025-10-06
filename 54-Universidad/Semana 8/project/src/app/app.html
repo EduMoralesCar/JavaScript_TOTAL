@@ -1,0 +1,10 @@
+<h2>Registrar Empleado</h2>
+<br>
+<input type="text" name="" placeholder="Ingrese Nombre del Empleado" [(ngModel)] = "nuevoEmpleado">
+<button (click)="agregarEmpleado()">Agregar</button>
+<br>
+<hr>
+
+<ul>
+  <li *ngFor="let empleado of empleados">{{empleado}}</li>
+</ul>
