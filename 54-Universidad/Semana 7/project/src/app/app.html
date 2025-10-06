@@ -1,0 +1,36 @@
+<!-- Tu HTML está bien estructurado -->
+<nav class="navbar navbar-dark bg-primary mb-3">
+  <a class="navbar-brand" href="#">Proyecto Angular - Universidad</a>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let empleado of empleadoArray">
+          {{empleado.nombre}} - {{empleado.apellido}} - {{empleado.cargo}}
+        </li>
+      </ul>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Insertar Empleado</h5>
+          <div>
+            <input type="text" class="form-control mb-2" [(ngModel)]="nombre" placeholder="Nombre">
+            <input type="text" class="form-control mb-2" [(ngModel)]="apellido" placeholder="Apellido">
+            <input type="text" class="form-control mb-2" [(ngModel)]="servicio" placeholder="Servicio">
+            <input type="number" class="form-control mb-2" [(ngModel)]="salario" placeholder="Salario">
+            <input type="date" class="form-control mb-2" [(ngModel)]="fechaIngreso" placeholder="Fecha de Ingreso">
+            <button class="btn btn-primary" (click)="agregarEmpleado()">Agregar Empleado</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Insertar Servicio</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
