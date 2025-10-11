@@ -1,0 +1,29 @@
+<!-- Registro Cliente -->
+
+<h1>Registro de Clientes</h1>
+<br>
+<input [(ngModel)]="nuevo_cliente.nombre_cliente" placeholder="Nombre">
+<input [(ngModel)]="nuevo_cliente.apellido_cliente" placeholder="Apellido">
+<input [(ngModel)]="nuevo_cliente.email_cliente" placeholder="Email">
+<input [(ngModel)]="nuevo_cliente.pais_cliente" placeholder="País">
+<button (click)="registrar()">Agregar Registro</button>
+
+<hr>
+
+<table border="1" [width]="'100%'">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>País</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let cliente of clientes">
+    <td>{{ cliente.nombre_cliente }}</td>
+    <td>{{ cliente.apellido_cliente }}</td>
+    <td>{{ cliente.email_cliente }}</td>
+    <td>{{ cliente.pais_cliente }}</td>
+    <td><button (click)="eliminar(cliente)">Eliminar</button></td>
+  </tr>
+</table>
