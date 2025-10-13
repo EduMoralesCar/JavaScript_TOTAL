@@ -1,0 +1,27 @@
+<h2>Mantenimiento de Usuarios</h2>
+<hr>
+<input [(ngModel)]="nuevoUsuario.nombre" placeholder="Ingrese su Usuario" type="text">
+<input [(ngModel)]="nuevoUsuario.correo" placeholder="Ingrese su Contraseña" type="password">
+<button (click)="guardar()">
+  {{editIndex===null? 'Registrar' : 'Actualizar'}}
+</button>
+<hr>
+<table border="1" width="100%">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Contraseña</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let u of usuarios; let i=index">
+      <td>{{u.nombre}}</td>
+      <td>{{u.correo}}</td>
+      <td>
+        <button (click)="editar(i)">Actualizar</button>
+        <button (click)="eliminar(i)">Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

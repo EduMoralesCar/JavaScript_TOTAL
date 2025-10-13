@@ -1,0 +1,32 @@
+<h2 class="text-center mb-4">Mantenimiento de Usuarios</h2>
+<br>
+
+<!-- Formulario para agregar usuarios -->
+<label for="nombre">Ingrese el nombre:</label>
+<input [(ngModel)]="nuevo_usuario.nombre" placeholder="Ej: Juan" type="text">
+<label for="correo">Ingrese el correo:</label>
+<input [(ngModel)]="nuevo_usuario.correo" placeholder="Ej: juan@example.com" type="email">
+<button (click)="guardar()">Guardar</button>
+
+<hr>
+
+<table border="1" [width]="'100%'">
+  <thead>
+    <tr> <!-- Fila -->
+      <th>Nombre</th> <!-- Columna -->
+      <th>Correo</th> <!-- Columna -->
+      <th>Acciones</th> <!-- Columna -->
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let usuario of usuarios; let i=index">
+      <td>{{usuario.nombre}}</td>
+      <td>{{usuario.correo}}</td>
+      <td>
+        <button (click)="eliminar(i)">Eliminar</button>
+        <button (click)="actualizar(i)">Actualizar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
