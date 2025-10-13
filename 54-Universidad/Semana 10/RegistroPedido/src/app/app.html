@@ -1,0 +1,59 @@
+<!-- ...existing code... -->
+<div class="container py-4">
+  <h2 class="mb-4">Registro de Pedidos</h2>
+
+  <div class="card mb-3 shadow-sm">
+    <div class="card-body">
+      <form class="row g-3 align-items-end">
+        <div class="col-md-3">
+          <label class="form-label fw-bold">Nombre del Cliente *</label>
+          <input [(ngModel)]="nuevo_pedido.nombre_cliente" name="nombre" type="text" class="form-control" placeholder="Ej: Juan Perez" maxlength="50">
+        </div>
+
+        <div class="col-md-3">
+          <label class="form-label fw-bold">Plato *</label>
+          <input [(ngModel)]="nuevo_pedido.plato" name="plato" type="text" class="form-control" placeholder="Ej: Arroz con Pollo" maxlength="50">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label fw-bold">Precio *</label>
+          <input [(ngModel)]="nuevo_pedido.precio" name="precio" type="number" class="form-control" placeholder="0.00" step="0.01" min="0">
+        </div>
+
+        <div class="col-md-2">
+          <label class="form-label fw-bold">Stock *</label>
+          <input [(ngModel)]="nuevo_pedido.stock" name="stock" type="number" class="form-control" placeholder="0" min="0">
+        </div>
+
+        <div class="col-md-2 d-grid">
+          <button type="button" class="btn btn-success" (click)="registrar()">Agregar Pedido</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th>Cliente</th>
+          <th>Plato</th>
+          <th class="text-end">Precio</th>
+          <th class="text-end">Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pedido of pedidos; let i = index">
+          <td>{{ pedido.nombre_cliente }}</td>
+          <td>{{ pedido.plato }}</td>
+          <td class="text-end">{{ pedido.precio | number:'1.2-2' }}</td>
+          <td class="text-end">{{ pedido.stock }}</td>
+        </tr>
+        <tr *ngIf="!pedidos || pedidos.length === 0">
+          <td colspan="4" class="text-center text-muted py-4">No hay pedidos registrados</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- ...existing code... -->
