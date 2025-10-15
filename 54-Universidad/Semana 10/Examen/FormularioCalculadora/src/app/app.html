@@ -1,0 +1,36 @@
+<div class="container mt-4"></div>
+<h1 class="text-center text-primary mb-4 fw-bold">Formulario Calculadora</h1>
+
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="mb-3">
+      <label class="form-label fw-bold">Operando 1</label>
+      <input class="form-control" type="number" [(ngModel)]="op1" placeholder="Ej: 12" />
+    </div>
+
+    <div class="mb-3" *ngIf="operation !== 'Raiz'">
+      <label class="form-label fw-bold">Operando 2</label>
+      <input class="form-control" type="number" [(ngModel)]="op2" placeholder="Ej: 3" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-bold">Operación</label>
+      <select class="form-select" [(ngModel)]="operation" aria-label="Seleccionar operación">
+        <option value="+">Sumar (+)</option>
+        <option value="-">Restar (-)</option>
+        <option value="*">Multiplicar (*)</option>
+        <option value="/">Dividir (/)</option>
+        <option value="Raiz">Raíz (√ operando 1)</option>
+      </select>
+    </div>
+
+    <div class="d-flex gap-2 mb-3">
+      <button class="btn btn-primary" (click)="calcular()">Calcular</button>
+      <button class="btn btn-secondary" (click)="limpiar()">Limpiar</button>
+    </div>
+
+    <div *ngIf="resultado !== null" class="alert alert-info">
+      <strong>Resultado:</strong> {{ resultado }}
+    </div>
+  </div>
+</div>
