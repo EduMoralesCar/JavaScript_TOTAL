@@ -23,9 +23,6 @@ export default function MyComponent() {
     setNombre("");
     setCorreo("");
     setContrasena("");
-
-    // Confirmación
-    Alert.alert("Guardado", "Usuario guardado correctamente.");
   };
 
   return (
