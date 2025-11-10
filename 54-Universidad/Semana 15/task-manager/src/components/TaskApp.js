@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 const ESTADOS = {
     pendiente: { etiqueta: 'Pendiente', badge: 'secondary' },
