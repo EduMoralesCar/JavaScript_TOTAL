@@ -103,7 +103,7 @@ const TaskApp = () => {
 
     return (
         <div className="container mt-4">
-            <h1 className="text-center mb-4">Gestor de Tareas</h1>
+            <h1 className="text-center mb-4 fw-bold text-primary">Gestor de Tareas</h1>
 
             <div className="row mb-3">
                 <div className="col-md-8">
