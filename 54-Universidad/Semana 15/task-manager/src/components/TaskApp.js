@@ -7,7 +7,7 @@ const ESTADOS = {
     revision: { etiqueta: 'Revisión', badge: 'warning' },
     bloqueado: { etiqueta: 'Bloqueado', badge: 'danger' },
     finalizado: { etiqueta: 'Finalizado', badge: 'success' },
-    cancelado: { etiqueta: 'Cancelado', badge: 'light' },
+    cancelado: { etiqueta: 'Cancelado', badge: 'dark' },
 };
 
 const CLAVE_ALMACENAMIENTO = 'taskmanager_tasks_v1';
