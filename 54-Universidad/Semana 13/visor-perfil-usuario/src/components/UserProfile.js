@@ -9,12 +9,11 @@ function UserProfile() {
     if (loading) return <p>Cargando perfil...</p>; // 4. Manejo de estado de carga
     if (error) return <p>Error: {error}</p>; // 5. Manejo de estado de error
 
-
+    // 6. Botones para cambiar el estado 'userId'
     const goToNextUser = () => {
         setUserId(currentId => currentId + 1);
     };
 
-    // 6. Botones para cambiar el estado 'userId'
     const goToPreviousUser = () => {
         // Asegurarse de no ir a IDs negativos
         setUserId(currentId => (currentId > 1 ? currentId - 1 : 1));
