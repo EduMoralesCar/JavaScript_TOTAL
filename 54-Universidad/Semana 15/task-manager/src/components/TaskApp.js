@@ -1,24 +1,8 @@
 import { useState, useEffect, useMemo } from 'react';
-
-const ESTADOS = {
-    pendiente: { etiqueta: 'Pendiente', badge: 'secondary' },
-    'en progreso': { etiqueta: 'En Progreso', badge: 'primary' },
-    revision: { etiqueta: 'Revisión', badge: 'warning' },
-    bloqueado: { etiqueta: 'Bloqueado', badge: 'danger' },
-    finalizado: { etiqueta: 'Finalizado', badge: 'success' },
-    cancelado: { etiqueta: 'Cancelado', badge: 'dark' },
-};
-
-const CLAVE_ALMACENAMIENTO = 'taskmanager_tasks_v1';
-
-const tareaPorDefecto = () => ({
-    id: null,
-    titulo: '',
-    descripcion: '',
-    fechaCreacion: '',
-    fechaVencimiento: '',
-    estado: 'pendiente',
-});
+import * as servicio from '../services/taskService';
+import TaskForm from './TaskForm';
+import TaskList from './TaskList';
+import { ESTADOS, tareaPorDefecto, CLAVE_ALMACENAMIENTO } from '../config/taskConfig';
 
 const TaskApp = () => {
     const [tareas, setTareas] = useState(() => {
@@ -26,10 +10,24 @@ const TaskApp = () => {
             const raw = localStorage.getItem(CLAVE_ALMACENAMIENTO);
             return raw ? JSON.parse(raw) : [];
         } catch (e) {
-            console.error('Error leyendo localStorage', e);
+            console.error('Error leyendo tareas desde localStorage', e);
             return [];
         }
     });
+
+    const [usuarios, setUsuarios] = useState([]);
+
+    // cargar usuarios desde JSONPlaceholder (solo lectura) y tareas desde taskService
+    useEffect(() => {
+        let mounted = true;
+        (async () => {
+            const u = await servicio.obtenerUsuarios();
+            if (mounted) setUsuarios(u);
+            const t = await servicio.obtenerTareas();
+            if (mounted) setTareas(t);
+        })();
+        return () => { mounted = false; };
+    }, []);
 
     const [filtro, setFiltro] = useState('all');
     const [editando, setEditando] = useState(null);
@@ -65,34 +63,53 @@ const TaskApp = () => {
         setFormulario(prev => ({ ...prev, [name]: value }));
     };
 
-    const manejarAgregar = (e) => {
+    const manejarAsignacion = (e) => {
+        const val = e.target.value;
+        // guardamos como array para mantener compatibilidad con tareas múltiples
+        setFormulario(prev => ({ ...prev, assignedUserIds: val ? [val] : [] }));
+    };
+
+    // Nota: la resolución de nombres de usuario se hace ahora en `TaskItem`.
+
+    const manejarAgregar = async (e) => {
         e.preventDefault();
         const titulo = formulario.title || formulario.titulo || '';
         if (!titulo.trim()) return alert('El título es requerido');
 
         const ahora = new Date();
+
+        // preparar payload con campos actuales del formulario
+        const payload = {
+            ...formulario,
+            titulo: formulario.titulo || formulario.title,
+            descripcion: formulario.descripcion || formulario.description,
+            fechaCreacion: formulario.fechaCreacion || formulario.createdAt || ahora.toISOString(),
+            fechaVencimiento: formulario.fechaVencimiento || formulario.dueDate || '',
+            estado: formulario.estado || formulario.status || 'pendiente',
+            assignedUserIds: formulario.assignedUserIds || []
+        };
+
         if (editando) {
-            setTareas(prev => prev.map(t => t.id === editando ? { ...t, ...formulario } : t));
+            const updated = await servicio.actualizarTarea(editando, payload);
+            setTareas(prev => prev.map(t => String(t.id) === String(editando) ? updated : t));
             setEditando(null);
         } else {
-            const nueva = {
-                ...formulario,
-                id: Date.now(),
-                createdAt: ahora.toISOString(),
-            };
-            setTareas(prev => [nueva, ...prev]);
+            const created = await servicio.crearTarea(payload);
+            setTareas(prev => [created, ...prev]);
         }
+
         setFormulario(tareaPorDefecto());
     };
 
     const manejarEditar = (task) => {
         setEditando(task.id);
-        setFormulario({ ...task });
+        setFormulario({ ...task, assignedUserIds: task.assignedUserIds || [] });
     };
 
-    const manejarEliminar = (id) => {
+    const manejarEliminar = async (id) => {
         if (!window.confirm('¿Eliminar esta tarea?')) return;
-        setTareas(prev => prev.filter(t => t.id !== id));
+        const next = await servicio.eliminarTarea(id);
+        setTareas(next);
     };
 
     const manejarLimpiarTodo = () => {
@@ -106,44 +123,16 @@ const TaskApp = () => {
 
             <div className="row mb-3">
                 <div className="col-md-8">
-                    <form onSubmit={manejarAgregar} className="card p-3">
-                        <div className="mb-2 d-flex justify-content-between align-items-center">
-                            <h5 className="mb-0">{editando ? 'Editar Tarea' : 'Nueva Tarea'}</h5>
-                            {editando && (
-                                <button type="button" className="btn btn-sm btn-outline-secondary" onClick={() => { setEditando(null); setFormulario(tareaPorDefecto()); }}>
-                                    Cancelar
-                                </button>
-                            )}
-                        </div>
-
-                        <div className="mb-2">
-                            <input name="titulo" value={formulario.titulo} onChange={manejarCambio} className="form-control" placeholder="Título" />
-                        </div>
-
-                        <div className="mb-2">
-                            <textarea name="descripcion" value={formulario.descripcion} onChange={manejarCambio} className="form-control" placeholder="Descripción" rows={3} />
-                        </div>
-
-                        <div className="row">
-                                <div className="col-md-6 mb-2">
-                                <label className="form-label small">Fecha de vencimiento</label>
-                                <input name="fechaVencimiento" value={formulario.fechaVencimiento} onChange={manejarCambio} type="date" className="form-control" />
-                            </div>
-                            <div className="col-md-6 mb-2">
-                                <label className="form-label small">Estado</label>
-                                <select name="estado" value={formulario.estado} onChange={manejarCambio} className="form-select">
-                                    {Object.keys(ESTADOS).map(key => (
-                                        <option key={key} value={key}>{ESTADOS[key].etiqueta}</option>
-                                    ))}
-                                </select>
-                            </div>
-                        </div>
-
-                        <div className="mt-2 d-flex gap-2">
-                            <button className="btn btn-primary" type="submit">{editando ? 'Guardar cambios' : 'Agregar tarea'}</button>
-                            <button type="button" className="btn btn-secondary" onClick={() => setFormulario(tareaPorDefecto())}>Limpiar</button>
-                        </div>
-                    </form>
+                    <TaskForm
+                        formulario={formulario}
+                        usuarios={usuarios}
+                        editando={editando}
+                        onChange={manejarCambio}
+                        onAsignacion={manejarAsignacion}
+                        onSubmit={manejarAgregar}
+                        onCancel={() => { setEditando(null); setFormulario(tareaPorDefecto()); }}
+                        onClear={() => setFormulario(tareaPorDefecto())}
+                    />
                 </div>
 
                 <div className="col-md-4">
@@ -163,34 +152,7 @@ const TaskApp = () => {
                 </div>
             </div>
 
-            <div className="card">
-                <div className="card-body">
-                    <h5 className="card-title">Tareas ({tareasVisibles.length})</h5>
-
-                    {tareasVisibles.length === 0 ? (
-                        <div className="alert alert-info">No hay tareas para mostrar.</div>
-                    ) : (
-                        <ul className="list-group">
-                            {tareasVisibles.map(tarea => (
-                                <li className="list-group-item d-flex justify-content-between align-items-start" key={tarea.id}>
-                                    <div className="ms-2 me-auto">
-                                        <div className="fw-bold">{tarea.title || tarea.titulo}</div>
-                                        <div className="small text-muted">Vence: {tarea.dueDate || tarea.fechaVencimiento || '—'}</div>
-                                        <div className="mt-1">{tarea.description || tarea.descripcion}</div>
-                                    </div>
-                                    <div className="d-flex flex-column align-items-end">
-                                        <span className={`badge bg-${ESTADOS[tarea.status || tarea.estado]?.badge || 'secondary'} mb-2`}>{ESTADOS[tarea.status || tarea.estado]?.etiqueta || (tarea.status || tarea.estado)}</span>
-                                        <div>
-                                            <button className="btn btn-sm btn-outline-primary me-1" onClick={() => manejarEditar(tarea)}>Editar</button>
-                                            <button className="btn btn-sm btn-outline-danger" onClick={() => manejarEliminar(tarea.id)}>Eliminar</button>
-                                        </div>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
-            </div>
+            <TaskList tareas={tareasVisibles} usuarios={usuarios} onEdit={manejarEditar} onDelete={manejarEliminar} />
         </div>
     );
 };
