@@ -24,93 +24,39 @@ Puntos importantes sobre persistencia y comportamiento
 - La app guarda las tareas en `localStorage` usando `CLAVE_ALMACENAMIENTO = 'taskmanager_tasks_v1'`.
 - Para evitar que los datos se sobrescriban al recargar, el estado inicial de `tareas` se inicializa leyendo `localStorage` sincrónicamente.
 - Las tareas pueden contener el campo `assignedUserIds` (array). Actualmente la UI permite asignar un único usuario pero se conserva la estructura para admitir múltiples asignados en el futuro.
+# Task Manager — Breve
 
-Cambiar el color de fondo global
-- Edita `src/index.css` y modifica la variable `--app-bg` en la parte superior. Por ejemplo:
+Aplicación de ejemplo en React para gestionar tareas a nivel local. El proyecto es intencionalmente pequeño y pensado para práctica y aprendizaje.
 
-```css
-:root { --app-bg: #0b2740; }
+Instrucciones rápidas
+
+- Clonar el repositorio:
+
+```bash
+git clone https://github.com/EduMoralesCar/JavaScript_TOTAL.git
+cd JavaScript_TOTAL/54-Universidad/Semana\ 15/task-manager
 ```
 
-Notas de diseño y futuro trabajo
-- Si en el futuro quieres tener un backend real, todos los accesos a datos están centralizados en `src/services/taskService.js` para facilitar el cambio.
-- Posibles mejoras rápidas: asignación múltiple (multi-select), avatars para usuarios, tooltips con email, o persistencia remota con `json-server` o una pequeña API Express.
+- Instalar dependencias y ejecutar en modo desarrollo:
 
-Problemas comunes
-- Si ves warnings sobre PowerShell y `npm start` en Windows (ejecución de scripts deshabilitada), ejecuta `npm.cmd start` o cambia la política de ejecución con precaución.
+```bash
+npm install
+npm start
+```
 
-Commit sugerido
-- `fix(readme): documentar task-manager — persistencia, estructura y estilo`
+- Abrir en el navegador: `http://localhost:3000`.
 
-Contacto
-- Proyecto mantenido por el autor del curso. Para cambios en la estructura, editar los archivos en `src/components` y `src/services`.
-# Getting Started with Create React App
+Notas útiles
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- Persistencia: las tareas se guardan en `localStorage` con la clave `taskmanager_tasks_v1`.
+- Usuarios: la lista de usuarios se obtiene desde `https://jsonplaceholder.typicode.com/users` (lectura).
+- Cambiar color de fondo global: editar `src/index.css` y modificar `--app-bg`.
 
-## Available Scripts
+Más información
 
-In the project directory, you can run:
+- Estructura principal: `src/components` (UI), `src/services` (persistencia) y `src/config` (constantes).
+- Si quieres agregar un backend real, la lógica de datos está centralizada en `src/services/taskService.js`.
 
-### `npm start`
+Licencia / Créditos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Proyecto educativo. Modifica y usa para práctica.
