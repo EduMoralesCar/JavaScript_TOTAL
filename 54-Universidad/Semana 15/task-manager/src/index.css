@@ -1,0 +1,35 @@
+:root {
+  /* Cambia este valor al color que prefieras (hex, rgb, etc) */
+  --app-bg: #0b2740; /* color por defecto: azul oscuro */
+  --app-fg: #eef6fb;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background-color: var(--app-bg);
+  color: var(--app-fg);
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ajustes menores para mejorar contraste sobre fondo oscuro */
+.card {
+  background-color: rgba(255,255,255,0.06);
+  color: inherit;
+}
+
+.btn-outline-primary,
+.btn-outline-secondary,
+.btn-outline-danger {
+  color: var(--app-fg);
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* Forzar texto oscuro en badges info para mejor contraste */
+.badge.bg-info {
+  color: #0b2736;
+}

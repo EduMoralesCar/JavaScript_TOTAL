@@ -1,3 +1,49 @@
+# Task Manager — Proyecto de ejemplo
+Este repositorio contiene la aplicación **Task Manager**, una pequeña SPA en React creada como ejercicio para la semana del curso. Está pensada para gestionar tareas localmente (persistencia en `localStorage`) y usar un endpoint público para la lista de usuarios.
+**Resumen rápido**
+- **Frontend:** React (Create React App) + Bootstrap.
+- **Persistencia:** `localStorage` con la clave `taskmanager_tasks_v1`.
+- **Usuarios:** se cargan desde `https://jsonplaceholder.typicode.com/users` (solo lectura).
+- **Servicios:** la lógica de lectura/escritura está en `src/services/taskService.js`.
+
+**Estructura relevante**
+- `src/components/TaskApp.js` — componente principal (estado y handlers).
+- `src/components/TaskForm.js` — formulario para crear/editar tareas.
+- `src/components/TaskList.js` — lista de tareas.
+- `src/components/TaskItem.js` — item de tarea (badge de estado, botones).
+- `src/services/taskService.js` — abstracción de persistencia y fetch de usuarios.
+- `src/config/taskConfig.js` — constantes: `ESTADOS`, `CLAVE_ALMACENAMIENTO`, `tareaPorDefecto`.
+- `src/index.css` — estilos globales (aquí puedes cambiar el `--app-bg`).
+
+Cómo correr (desarrollo)
+1. Instala dependencias: `npm install` (solo si no lo has hecho).
+2. Ejecuta la app: `npm start`.
+3. Abre `http://localhost:3000`.
+
+Puntos importantes sobre persistencia y comportamiento
+- La app guarda las tareas en `localStorage` usando `CLAVE_ALMACENAMIENTO = 'taskmanager_tasks_v1'`.
+- Para evitar que los datos se sobrescriban al recargar, el estado inicial de `tareas` se inicializa leyendo `localStorage` sincrónicamente.
+- Las tareas pueden contener el campo `assignedUserIds` (array). Actualmente la UI permite asignar un único usuario pero se conserva la estructura para admitir múltiples asignados en el futuro.
+
+Cambiar el color de fondo global
+- Edita `src/index.css` y modifica la variable `--app-bg` en la parte superior. Por ejemplo:
+
+```css
+:root { --app-bg: #0b2740; }
+```
+
+Notas de diseño y futuro trabajo
+- Si en el futuro quieres tener un backend real, todos los accesos a datos están centralizados en `src/services/taskService.js` para facilitar el cambio.
+- Posibles mejoras rápidas: asignación múltiple (multi-select), avatars para usuarios, tooltips con email, o persistencia remota con `json-server` o una pequeña API Express.
+
+Problemas comunes
+- Si ves warnings sobre PowerShell y `npm start` en Windows (ejecución de scripts deshabilitada), ejecuta `npm.cmd start` o cambia la política de ejecución con precaución.
+
+Commit sugerido
+- `fix(readme): documentar task-manager — persistencia, estructura y estilo`
+
+Contacto
+- Proyecto mantenido por el autor del curso. Para cambios en la estructura, editar los archivos en `src/components` y `src/services`.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
